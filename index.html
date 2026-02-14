@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malla Curricular Calendario - Ingeniería Civil UATF</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #272727;
+    color: #111;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #222;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1000;
+  }
+  .semestre {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    padding: 20px;
+    margin: 80px auto 40px auto;
+    max-width: 1200px;
+    border: 3px solid #000;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  .semestre h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    color: #000;
+  }
+  .materia {
+    background: #e0e0e0;
+    border: 2px solid #000;
+    padding: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+  .materia:hover {
+    transform: scale(1.03);
+  }
+  .materia.aprobada {
+    background: #4caf50; /* verde aprobado */
+    color: #fff;
+    border-color: #000;
+  }
+  /* Paleta distinta por semestre tipo calendario */
+  .sem1 { background: #780000; }
+  .sem2 { background: #C1121F; }
+  .sem3 { background: #FDF0D5; }
+  .sem4 { background: #003049; }
+  .sem5 { background: #669BBC; }
+  .sem6 { background: #ECF39E; }
+  .sem7 { background: #90A955; }
+  .sem8 { background: #4F772D; }
+  .sem9 { background: #31572C; }
+  .sem10 { background: #132A13; }
+
+  header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 1000;
+  font-size: 2.5em; /* <-- aquí defines el tamaño de las letras */
+  letter-spacing: 2px; /* opcional */
+}
+
+</style>
+</head>
+<body>
+<header>Ingeniería Civil/UATF</header>
+
+<div style="margin-top:80px">
+  <!-- Ejemplo: PRIMER SEMESTRE -->
+  <div class="semestre sem1">
+    <h2>Primer Semestre</h2>
+    <div class="materia" data-code="CIV101">CIV101 Dibujo Técnico I</div>
+    <div class="materia" data-code="FIS100">FIS100 Física Básica I y Lab.</div>
+    <div class="materia" data-code="MAT100">MAT100 Álgebra</div>
+    <div class="materia" data-code="MAT101">MAT101 Cálculo I</div>
+    <div class="materia" data-code="QMC100">QMC100 Química General</div>
+  </div>
+
+  <!-- SEGUNDO SEMESTRE -->
+  <div class="semestre sem2">
+    <h2>Segundo Semestre</h2>
+    <div class="materia" data-code="CIV102" data-prereq="CIV101">CIV102 Dibujo Técnico II</div>
+    <div class="materia" data-code="FIS102" data-prereq="FIS100,MAT101">FIS102 Física Básica II y Lab.</div>
+    <div class="materia" data-code="MAT102" data-prereq="MAT101">MAT102 Cálculo II</div>
+    <div class="materia" data-code="MAT103" data-prereq="MAT100">MAT103 Álgebra Lineal y Teoría Matricial</div>
+    <div class="materia" data-code="MAT205" data-prereq="MAT101,MAT100">MAT205 Informática Aplicada</div>
+  </div>
+
+  <!-- TERCER SEMESTRE -->
+  <div class="semestre sem3">
+    <h2>Tercer Semestre</h2>
+    <div class="materia" data-code="CIV200" data-prereq="MAT102,MAT103,FIS102">CIV200 Estructuras Isostáticas</div>
+    <div class="materia" data-code="CIV213" data-prereq="CIV102,MAT205">CIV213 Topografía I</div>
+    <div class="materia" data-code="CIV249" data-prereq="QMC100,MAT205">CIV249 Geología General</div>
+    <div class="materia" data-code="FIS200" data-prereq="FIS102">FIS200 Física Básica III y Lab.</div>
+    <div class="materia" data-code="MAT207" data-prereq="MAT102,MAT103">MAT207 Ecuaciones Diferenciales</div>
+    <div class="materia" data-code="MAT313" data-prereq="MAT102,MAT103">MAT313 Análisis Vectorial y Tensorial</div>
+  </div>
+
+  <!-- CUARTO SEMESTRE -->
+  <div class="semestre sem4">
+    <h2>Cuarto Semestre</h2>
+    <div class="materia" data-code="CIV201" data-prereq="CIV200,MAT207">CIV201 Estructuras Isostáticas II</div>
+    <div class="materia" data-code="CIV214" data-prereq="CIV213">CIV214 Topografía II y SIG</div>
+    <div class="materia" data-code="CIV216" data-prereq="QMC100,FIS200">CIV216 Materiales de Construcción y Lab.</div>
+    <div class="materia" data-code="CIV246" data-prereq="FIS200,CIV200">CIV246 Instalaciones</div>
+    <div class="materia" data-code="CIV361" data-prereq="CIV213,CIV249">CIV361 Ingeniería del Medio Ambiente</div>
+    <div class="materia" data-code="CIV370" data-prereq="MAT313">CIV370 Probabilidad y Estadística</div>
+  </div>
+
+  <!-- QUINTO SEMESTRE -->
+  <div class="semestre sem5">
+    <h2>Quinto Semestre</h2>
+    <div class="materia" data-code="CIV202" data-prereq="CIV201">CIV202 Resistencia de Materiales I</div>
+    <div class="materia" data-code="CIV217" data-prereq="CIV216,CIV246">CIV217 Tecnología del Hormigón</div>
+    <div class="materia" data-code="CIV219" data-prereq="CIV216,CIV214">CIV219 Mecánica de Suelos I</div>
+    <div class="materia" data-code="CIV221" data-prereq="CIV214,CIV216">CIV221 Laboratorio de Mecánica de Suelos I</div>
+    <div class="materia" data-code="CIV229" data-prereq="CIV201,FIS200">CIV229 Hidráulica I y Lab.</div>
+    <div class="materia" data-code="CIV231" data-prereq="CIV361,CIV370">CIV231 Hidrología</div>
+  </div>
+
+  <!-- SEXTO SEMESTRE -->
+  <div class="semestre sem6">
+    <h2>Sexto Semestre</h2>
+    <div class="materia" data-code="CIV203" data-prereq="CIV202">CIV203 Resistencia de Materiales II</div>
+    <div class="materia" data-code="CIV204" data-prereq="CIV217,CIV202">CIV204 Estructuras Hiperestáticas I</div>
+    <div class="materia" data-code="CIV220" data-prereq="CIV219,CIV221">CIV220 Mecánica de Suelos II</div>
+    <div class="materia" data-code="CIV222" data-prereq="CIV221,CIV219">CIV222 Laboratorio de Mecánica de Suelos II</div>
+    <div class="materia" data-code="CIV230" data-prereq="CIV229">CIV230 Hidráulica II y Lab.</div>
+    <div class="materia" data-code="CIV244" data-prereq="CIV204,CIV203">CIV244 Estructuras de Madera</div>
+    <div class="materia" data-code="CIV323" data-prereq="CIV219,CIV221">CIV323 Carreteras I</div>
+  </div>
+
+  <!-- SEPTIMO SEMESTRE -->
+  <div class="semestre sem7">
+    <h2>Séptimo Semestre</h2>
+    <div class="materia" data-code="CIV232" data-prereq="CIV230,CIV231">CIV232 Obras Hidráulicas I</div>
+    <div class="materia" data-code="CIV245" data-prereq="CIV204">CIV245 Estructuras Metálicas</div>
+    <div class="materia" data-code="CIV247" data-prereq="CIV222,CIV323">CIV247 Maquinaria y Equipo de Construcción</div>
+    <div class="materia" data-code="CIV306" data-prereq="CIV217,CIV204">CIV306 Estructuras Hiperestáticas II</div>
+    <div class="materia" data-code="CIV325" data-prereq="CIV323,CIV222">CIV325 Carreteras II</div>
+    <div class="materia" data-code="CIV338" data-prereq="CIV229,CIV231">CIV338 Ingeniería Sanitaria I</div>
+    <div class="materia" data-code="CIV346" data-prereq="CIV245,CIV244">CIV346 Procesos Constructivos</div>
+  </div>
+
+  <!-- OCTAVO SEMESTRE -->
+  <div class="semestre sem8">
+    <h2>Octavo Semestre</h2>
+    <div class="materia" data-code="CIV209" data-prereq="CIV306">CIV209 Hormigón Armado I</div>
+    <div class="materia" data-code="CIV235" data-prereq="CIV232,CIV338">CIV235 Obras Hidráulicas II</div>
+    <div class="materia" data-code="CIV250" data-prereq="CIV306,CIV220">CIV250 Fundaciones</div>
+    <div class="materia" data-code="CIV339" data-prereq="CIV338">CIV339 Ingeniería Sanitaria II</div>
+    <div class="materia" data-code="CIV376" data-prereq="CIV245">CIV376 Investigación de Operaciones</div>
+  </div>
+
+  <!-- NOVENO SEMESTRE -->
+  <div class="semestre sem9">
+    <h2>Noveno Semestre</h2>
+    <div class="materia" data-code="CIV210" data-prereq="CIV209,CIV250,CIV235,CIV376,CIV346,CIV339">CIV210 Hormigón Armado II</div>
+    <div class="materia" data-code="CIV248" data-prereq="CIV346,CIV247">CIV248 Dirección de Obras y Costos</div>
+    <div class="materia" data-code="CIV313" data-prereq="CIV209,CIV250,CIV235,CIV376,CIV339,CIV346">CIV313 Elementos Finitos</div>
+    <div class="materia" data-code="CIV399" data-prereq="CIV209,CIV250,CIV235,CIV376,CIV339,CIV346">CIV399 Seminario de Grado I e Investigación Científica</div>
+    <div class="materia" data-code="CJS103" data-prereq="CIV346">CJS103 Ingeniería Legal</div>
+  </div>
+
+  <!-- DECIMO SEMESTRE -->
+  <div class="semestre sem10">
+    <h2>Décimo Semestre</h2>
+    <div class="materia" data-code="CIV400" data-prereq="CIV399,CIV210,CIV313">CIV400 Seminario de Grado II e Investigación Científica</div>
+  </div>
+
+  <!-- Aquí irían los demás semestres con sus materias y prerrequisitos -->
+</div>
+
+<script>
+  const materias = document.querySelectorAll('.materia');
+
+  materias.forEach(m => {
+    m.addEventListener('click', () => {
+      const code = m.dataset.code;
+      const prereq = m.dataset.prereq ? m.dataset.prereq.split(',') : [];
+
+      if (!m.classList.contains('aprobada')) {
+        // Verificar prerrequisitos
+        let ok = true;
+        prereq.forEach(p => {
+          const req = document.querySelector(`.materia[data-code="${p}"]`);
+          if (!req || !req.classList.contains('aprobada')) {
+            ok = false;
+          }
+        });
+        if (ok) {
+          m.classList.add('aprobada');
+        } else {
+          alert("Debes aprobar los prerrequisitos primero.");
+        }
+      } else {
+        // Desmarcar y quitar dependientes
+        m.classList.remove('aprobada');
+        materias.forEach(dep => {
+          if (dep.dataset.prereq && dep.dataset.prereq.includes(code)) {
+            dep.classList.remove('aprobada');
+          }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
