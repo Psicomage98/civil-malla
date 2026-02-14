@@ -4,83 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Malla Curricular Calendario - Ingeniería Civil UATF</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #272727;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
     color: #111;
   }
+
   header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: #222;
+    background: linear-gradient(90deg, #222, #444);
     color: #fff;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     font-weight: bold;
     z-index: 1000;
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    animation: glow 3s infinite alternate;
   }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 8px #66bbff; }
+    to { text-shadow: 0 0 18px #00e0ff; }
+  }
+
   .semestre {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    padding: 20px;
-    margin: 80px auto 40px auto;
+    gap: 14px;
+    padding: 25px;
+    margin: 100px auto 50px auto;
     max-width: 1200px;
     border: 3px solid #000;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
   }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .semestre h2 {
     grid-column: 1 / -1;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.4em;
-    color: #000;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
   }
+
   .materia {
     background: #e0e0e0;
     border: 2px solid #000;
-    padding: 12px;
+    padding: 14px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    border-radius: 6px;
   }
+
   .materia:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.7);
   }
+
   .materia.aprobada {
-    background: #4caf50; /* verde aprobado */
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
     color: #fff;
     border-color: #000;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.8);
+    transform: scale(1.03);
   }
+
   /* Paleta distinta por semestre tipo calendario */
   .sem1 { background: #780000; }
   .sem2 { background: #C1121F; }
-  .sem3 { background: #FDF0D5; }
+  .sem3 { background: #45050C; }
   .sem4 { background: #003049; }
   .sem5 { background: #669BBC; }
-  .sem6 { background: #ECF39E; }
+  .sem6 { background: #E3B23C; }
   .sem7 { background: #90A955; }
   .sem8 { background: #4F772D; }
   .sem9 { background: #31572C; }
   .sem10 { background: #132A13; }
 
-  header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #222;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  z-index: 1000;
-  font-size: 2.5em; /* <-- aquí defines el tamaño de las letras */
-  letter-spacing: 2px; /* opcional */
-}
 
 </style>
 </head>
